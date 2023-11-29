@@ -8,6 +8,25 @@
     padding-top: 81px;
   }
 
+  .Content {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #dadadf;
+  }
+  
+  .FillerImage {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -19,6 +38,10 @@
   
   a:hover {
     text-decoration: none;
+  }
+
+  input[type="file"] {
+    display: none;
   }
   
   a:hover i {
@@ -37,4 +60,23 @@
     cursor: pointer;
     transition: color ease-in-out 0.3s;
     color: #0F6B42;
+  }
+
+  figure {
+    text-align: center;
+    display: inline-block;
+  }
+  
+  /* scrollbar */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
