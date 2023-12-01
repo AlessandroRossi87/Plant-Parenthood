@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios"
 
 import Form from "react-bootstrap/Form";
@@ -15,6 +15,9 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+
 function PlantCreateForm() {
   const [errors, setErrors] = useState({});
 
@@ -22,12 +25,15 @@ function PlantCreateForm() {
     title: "",
     content: "",
     image: "",
-    taxonomy_choices: [],
+    taxonomy: [],
     plant_children: 0,
   });
   const [taxonomyChoices, setTaxonomyChoices] = useState([]);
 
-  const { title, taxonomy_choices, content, plant_children, image } = postData;
+  const { title, taxonomy, content, plant_children, image } = postData;
+
+  const imageInput = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     const fetchTaxonomyChoices = async () => {
@@ -45,7 +51,9 @@ function PlantCreateForm() {
   const handleChange = (event) => {
     setPostData({
       ...postData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value === "taxonomy"
+        ? event.target.value
+        : event.target.value,
     });
   };
 
@@ -56,6 +64,30 @@ function PlantCreateForm() {
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("taxonomy_choices", taxonomy);
+    formData.append("plant_children", plant_children);
+
+    if (imageInput.current.files.length) {
+      formData.append("image", imageInput.current.files[0]);
+    }
+
+    try {
+      const { data } = await axiosReq.post("/plants/", formData);
+      history.push(`/plants/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
@@ -75,7 +107,6 @@ function PlantCreateForm() {
         <Form.Control
           as="select"
           name="taxonomy"
-          // value={taxonomy_choices}
           onChange={handleChange}
         >
           <option value="">Select Taxonomy</option>
@@ -118,7 +149,7 @@ function PlantCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit} encType="multipart/form-data">
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -155,6 +186,7 @@ function PlantCreateForm() {
                 id="image-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={imageInput}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
