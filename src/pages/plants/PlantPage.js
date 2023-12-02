@@ -58,7 +58,10 @@ function PlantPage() {
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
-              <Comment key={comment.id} {...comment} />
+              <Comment key={comment.id}
+              {...comment}
+              setPlant={setPlant}
+              setComments={setComments}/>
             ))
           ) : currentUser ? (
             <span>No comments yet, be the first to comment!</span>
