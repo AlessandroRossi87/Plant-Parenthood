@@ -8,18 +8,16 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/PlantCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
+
 import { Image } from "react-bootstrap";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function PlantCreateForm() {
+function PlantEditForm() {
   const [errors, setErrors] = useState({});
 
   const [plantData, setPlantData] = useState({
@@ -35,6 +33,22 @@ function PlantCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/plants/${id}/`);
+        const { title, description, image, taxonomy, plant_children, is_owner } = data;
+
+        is_owner ? setPlantData({ title, description, image, taxonomy, plant_children }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
 
   useEffect(() => {
     const fetchTaxonomyChoices = async () => {
@@ -83,8 +97,8 @@ function PlantCreateForm() {
     }
 
     try {
-      const { data } = await axiosReq.post("/plants/", formData);
-      history.push(`/plants/${data.id}`);
+      await axiosReq.put(`/plants/${id}/`, formData);
+      history.push(`/plants/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -161,7 +175,7 @@ function PlantCreateForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
     </div>
   );
@@ -174,8 +188,6 @@ function PlantCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
                   <figure>
                     <Image className={appStyles.Image} src={image} rounded />
                   </figure>
@@ -187,18 +199,6 @@ function PlantCreateForm() {
                       Change the image
                     </Form.Label>
                   </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
-                </Form.Label>
-              )}
 
               <Form.File
                 id="image-upload"
@@ -223,4 +223,4 @@ function PlantCreateForm() {
   );
 }
 
-export default PlantCreateForm;
+export default PlantEditForm;
