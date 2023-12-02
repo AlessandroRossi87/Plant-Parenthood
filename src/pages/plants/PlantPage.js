@@ -8,19 +8,28 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults"
 import Plant from "./Plant";
+import Comment from "../comments/Comment";
+
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PlantPage() {
     const { id } = useParams();
     const [plant, setPlant] = useState({ results: [] });
+
+    const currentUser = useCurrentUser();
+    const profile_image = currentUser?.profile_image;
+    const [comments, setComments] = useState({ results: [] });
   
     useEffect(() => {
       const handleMount = async () => {
         try {
-          const [{ data: plant }] = await Promise.all([
+          const [{ data: plant }, { data: comments }] = await Promise.all([
             axiosReq.get(`/plants/${id}`),
+            axiosReq.get(`/comments/?plant=${id}`),
           ]);
           setPlant({ results: [plant] });
-          console.log(plant);
+          setComments(comments);
         } catch (err) {
           console.log(err);
         }
@@ -36,7 +45,26 @@ function PlantPage() {
         <p>Popular profiles for mobile</p>
         <Plant {...plant.results[0]} setPlants={setPlant} plantPage />
         <Container className={appStyles.Content}>
-          Comments
+        {currentUser ? (
+          <CommentCreateForm
+            profile_id={currentUser.profile_id}
+            profileImage={profile_image}
+            plant={id}
+            setPlant={setPlant}
+            setComments={setComments}
+          />
+          ) : comments.results.length ? (
+            "Comments"
+          ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet, be the first to comment!</span>
+          ) : (
+            <span>No comments... yet</span>
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
