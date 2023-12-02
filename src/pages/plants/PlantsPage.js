@@ -15,7 +15,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import { fetchMoreData } from "../../utils/utils";
+import { fetchMoreData } from "../../utils/utils";
 
 function PlantsPage({ message, filter = "" }) {
   const [plants, setPlants] = useState({ results: [] });
@@ -66,9 +66,15 @@ function PlantsPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {plants.results.length ? (
-              plants.results.map((plant) => (
-                <Plant key={plant.id} {...plant} setPlants={setPlants} />
-              ))
+              <InfiniteScroll
+                children={plants.results.map((plant) => (
+                  <Plant key={plant.id} {...plant} setPlants={setPlants} />
+                ))}
+                dataLength={plants.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!plants.next}
+                next={() => fetchMoreData(plants, setPlants)}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
