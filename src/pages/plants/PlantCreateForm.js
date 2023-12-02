@@ -24,14 +24,14 @@ function PlantCreateForm() {
 
   const [postData, setPostData] = useState({
     title: "",
-    content: "",
+    description: "",
     image: "",
     taxonomy: [],
     plant_children: 0,
   });
   const [taxonomyChoices, setTaxonomyChoices] = useState([]);
 
-  const { title, taxonomy, content, plant_children, image } = postData;
+  const { title, taxonomy, description, plant_children, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -60,10 +60,11 @@ function PlantCreateForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
+      const selectedImage = event.target.files[0];
+      // URL.revokeObjectURL(image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
+        image: URL.createObjectURL(selectedImage),
       });
     }
   };
@@ -73,7 +74,7 @@ function PlantCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("content", content);
+    formData.append("description", description);
     formData.append("taxonomy_choices", taxonomy);
     formData.append("plant_children", plant_children);
 
@@ -129,8 +130,8 @@ function PlantCreateForm() {
         <Form.Control
           as="textarea"
           rows={6}
-          name="content"
-          value={content}
+          name="description"
+          value={description}
           onChange={handleChange}
         />
       </Form.Group>

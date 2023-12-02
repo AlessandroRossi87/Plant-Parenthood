@@ -18,7 +18,7 @@ const Plant = (props) => {
     moist_count,
     dry_count,
     title,
-    content,
+    description,
     taxonomy_choices,
     image,
     updated_at,
@@ -144,7 +144,7 @@ const Plant = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+        {description && <Card.Text>{description}</Card.Text>}
         {taxonomy_choices && <Card.Text>{taxonomy_choices}</Card.Text>}
         <div className={styles.PlantBar}>
           {is_owner ? (
