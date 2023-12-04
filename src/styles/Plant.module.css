@@ -11,14 +11,38 @@
     margin: 0 0;
   }
   
-  .Heart {
+  .Hydrate {
+    color: rgb(66, 230, 66);
+  }
+  
+  .Hydrate:hover {
+    color: rgb(6, 103, 6);
+  }
+  
+  .HydrateOutline:hover {
+    color: rgb(0, 43, 0);
+  }
+
+  .Moist {
+    color: orange;
+  }
+  
+  .Moist:hover {
+    color: rgb(174, 114, 2);
+  }
+  
+  .MoistOutline:hover {
+    color: rgb(85, 56, 1);
+  }
+
+  .Dry {
     color: #f85032;
   }
   
-  .Heart:hover {
-    color: #2142b2;
+  .Dry:hover {
+    color: #b52005;
   }
   
-  .HeartOutline:hover {
-    color: #f85032;
+  .DryOutline:hover {
+    color: #641102;
   }

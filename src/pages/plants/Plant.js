@@ -176,17 +176,17 @@ const Plant = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't hydrate to your own plant!</Tooltip>}
+              overlay={<Tooltip>You can't hydrate your own plant!</Tooltip>}
             >
               <i className="fa-solid fa-shower" />
             </OverlayTrigger>
           ) : reactions_id ? (
             <span onClick={handleUnhydrate}>
-              <i className={`fa-solid fa-shower ${styles.Heart}`} />
+              <i className={`fa-solid fa-shower ${styles.Hydrate}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleHydrate}>
-              <i className={`fa-solid fa-shower ${styles.HeartOutline}`} />
+              <i className={`fa-solid fa-shower ${styles.HydrateOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
@@ -206,11 +206,11 @@ const Plant = (props) => {
             </OverlayTrigger>
           ) : reactions_id ? (
             <span onClick={handleUnmoist}>
-              <i className={`fa-solid fa-faucet-drip ${styles.Heart}`} />
+              <i className={`fa-solid fa-faucet-drip ${styles.Moist}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleMoist}>
-              <i className={`fa-solid fa-faucet-drip ${styles.HeartOutline}`} />
+              <i className={`fa-solid fa-faucet-drip ${styles.MoistOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
@@ -230,11 +230,11 @@ const Plant = (props) => {
             </OverlayTrigger>
           ) : reactions_id ? (
             <span onClick={handleUndry}>
-              <i className={`fa-solid fa-sun-plant-wilt ${styles.Heart}`} />
+              <i className={`fa-solid fa-sun-plant-wilt ${styles.Dry}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleDry}>
-              <i className={`fa-solid fa-sun-plant-wilt ${styles.HeartOutline}`} />
+              <i className={`fa-solid fa-sun-plant-wilt ${styles.DryOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
@@ -245,6 +245,8 @@ const Plant = (props) => {
             </OverlayTrigger>
           )}
           {dry_count}
+          </div>
+          <div>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
