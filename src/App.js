@@ -10,6 +10,7 @@ import PlantPage from "./pages/plants/PlantPage";
 import PlantsPage from "./pages/plants/PlantsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PlantEditForm from "./pages/plants/PlantEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/plants/create" render={() => <PlantCreateForm />} />
           <Route exact path="/plants/:id" render={() => <PlantPage />} />
           <Route exact path="/plants/:id/edit" render={() => <PlantEditForm />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
