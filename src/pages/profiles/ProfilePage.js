@@ -19,26 +19,38 @@ import {
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Plant from "../plants/Plant";
+import { fetchMoreData } from "../../utils/utils";
+import NoResults from "../../assets/no-results.png";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profilePlants, setProfilePlants] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  const setProfileData = useSetProfileData();
+
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
+
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-        ]);
+        const [{ data: pageProfile }, { data: profilePlants }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/plants/?owner__profile=${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setProfilePlants(profilePlants);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -49,6 +61,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
@@ -80,14 +93,14 @@ function ProfilePage() {
             (profile?.following_id ? (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => {}}
+                onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
+                onClick={() => handleFollow(profile)}
               >
                 follow
               </Button>
@@ -101,8 +114,24 @@ function ProfilePage() {
   const mainProfilePlants = (
     <>
       <hr />
-      <p className="text-center">Profile owner's plants</p>
+      <p className="text-center">{profile?.owner}'s plants</p>
       <hr />
+      {profilePlants.results.length ? (
+        <InfiniteScroll
+          children={profilePlants.results.map((plant) => (
+            <Plant key={plant.id} {...plant} setPlants={setProfilePlants} />
+          ))}
+          dataLength={profilePlants.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profilePlants.next}
+          next={() => fetchMoreData(profilePlants, setProfilePlants)}
+        />
+      ) : (
+        <Asset
+          src={NoResults}
+          message={`No results found, ${profile?.owner} hasn't posted any plants yet.`}
+        />
+      )}
     </>
   );
 
