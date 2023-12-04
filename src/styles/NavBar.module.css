@@ -6,11 +6,19 @@
 .NavLink {
     padding: 5px;
   }
+
+.NavBar a{
+    color: #ffff;
+}
   
+.NavBar i {
+  color: #ffff;
+  }
+
 .Active i {
     color: #d0d825;
   }
 
-i:hover {
-    color: #d0d825;
+.i:hover {
+    color: red;
   }

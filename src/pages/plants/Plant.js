@@ -20,6 +20,8 @@ const Plant = (props) => {
     dry_count,
     title,
     description,
+    plant_request_id,
+    plant_children,
     taxonomy_choices,
     image,
     updated_at,
@@ -140,6 +142,10 @@ const Plant = (props) => {
     }
   };
 
+  const handleRequest = async () => {
+ 
+  };
+
   return (
     <Card className={styles.Plant}>
       <Card.Body>
@@ -239,7 +245,34 @@ const Plant = (props) => {
             </OverlayTrigger>
           )}
           {dry_count}
-          <Link to={`/posts/${id}`}>
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't request your own plant!</Tooltip>}
+            >
+              <i className="fa-solid fa-seedling" />
+            </OverlayTrigger>
+          ) : plant_request_id ? (
+            <span onClick={handleRequest}>
+              <i className={`fa-solid fa-seedling ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Plant request already sent!</Tooltip>}
+            >
+              <i className="fa-solid fa-seedling" />
+            </OverlayTrigger>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to request plants!</Tooltip>}
+            >
+              <i className="fa-solid fa-seedling" />
+            </OverlayTrigger>
+          )}
+          {plant_children}
+          <Link to={`/plants/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}
