@@ -50,7 +50,14 @@
   }
   
   i {
-    color: #cfced3;
+    color: #0F6B42;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+  }
+
+  .NavBar i {
+    color: #fff;
     font-size: 1.6rem;
     padding: 7px;
     vertical-align: middle;

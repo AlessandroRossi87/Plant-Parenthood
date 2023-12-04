@@ -121,7 +121,7 @@ const ProfileEditForm = () => {
             <Form.Group>
               {image && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image src={`https://res.cloudinary.com/dg6tnws5o/${image}`} fluid />
                 </figure>
               )}
               {errors?.image?.map((message, idx) => (

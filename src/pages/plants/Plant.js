@@ -166,7 +166,7 @@ const Plant = (props) => {
         </Media>
       </Card.Body>
       <Link to={`/plants/${id}`}>
-        <Card.Img src={image} alt={title} />
+        <Card.Img src={`https://res.cloudinary.com/dg6tnws5o/${image}`} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
