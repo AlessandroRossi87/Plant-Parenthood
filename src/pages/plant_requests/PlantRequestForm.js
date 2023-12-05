@@ -1,104 +1,70 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";  // Import axios or use your axios instance
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
-import Alert from "react-bootstrap/Alert";
-import Modal from "react-bootstrap/Modal";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import useRedirect from "../../hooks/useRedirect";
+import React, { useState } from "react";
+import { Button, Image, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
+import { axiosReq } from "../../api/axiosDefaults";
 
-const PlantRequestForm = () => {
-  useRedirect("loggedout");
-  const [requests, setRequests] = useState([]);
-  const [error, setError] = useState(null);
+function PlantRequestForm({ plantRequest, isOwner, onApprove, onDeny, onCancelRequest }) {
+  const [showMore, setShowMore] = useState(false);
 
-  const history = useHistory();
-
-  useEffect(() => {
-    const fetchPlantRequests = async () => {
-      try {
-        const response = await axios.get("/plant-requests/");
-        setRequests(response.data);
-      } catch (err) {
-        setError(err.response?.data);
-      }
-    };
-
-    fetchPlantRequests();
-  }, []);
-
-  const handleApprove = async (requestId) => {
-    try {
-      await axios.patch(`/plant-requests/${requestId}/approve/`);
-      const response = await axios.get("/plant-requests/");
-      setRequests(response.data);
-    } catch (err) {
-      setError(err.response?.data);
-    }
+  const handleToggle = () => {
+    setShowMore(!showMore);
   };
 
-  const handleDeny = async (requestId) => {
-    try {
-      await axios.patch(`/plant-requests/${requestId}/deny/`);
-      const response = await axios.get("/plant-requests/");
-      setRequests(response.data);
-    } catch (err) {
-      setError(err.response?.data);
-    }
+  const renderPlantRequest = (request) => (
+    <div key={request.id} className="d-flex align-items-center justify-content-between p-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <Image className="mr-2" src={request.plant.previewImage} rounded style={{ width: "50px", height: "50px" }} />
+        <div>
+          <p className="mb-0">{request.requester.username}</p>
+        </div>
+      </div>
+      {isOwner ? (
+        <div>
+          <Button variant="success" className="mr-2" onClick={() => onApprove(request)}>
+            Approve
+          </Button>
+          <Button variant="danger" onClick={() => onDeny(request)}>
+            Deny
+          </Button>
+        </div>
+      ) : (
+        <Button variant="danger" onClick={() => onCancelRequest(request)}>
+          Cancel request
+        </Button>
+      )}
+    </div>
+  );
+
+  const renderPlantRequests = () => {
+    const requestsToDisplay = showMore ? plantRequest : plantRequest.slice(0, 5);
+
+    return requestsToDisplay.map((request) => renderPlantRequest(request));
   };
 
   return (
-    <Container>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Requester</th>
-            <th>Plant</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {requests.map((request) => (
-            <tr key={request.id}>
-              <td>{request.requester.username}</td>
-              <td>{request.plant.title}</td>
-              <td>{request.request_date}</td>
-              <td>{request.is_approved ? "Approved" : "Pending"}</td>
-              <td>
-                {!request.is_approved && (
-                  <>
-                    <Button
-                      className={btnStyles.Button}
-                      onClick={() => handleApprove(request.id)}
-                    >
-                      Approve
-                    </Button>
-                    <Button
-                      className={btnStyles.Button}
-                      onClick={() => handleDeny(request.id)}
-                    >
-                      Deny
-                    </Button>
-                  </>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-
-      {error && <Alert variant="danger">{error}</Alert>}
-
-      <Button className={btnStyles.Button} onClick={() => history.goBack()}>
-        Back
-      </Button>
-    </Container>
+    <div className="mt-4">
+      <h4>Plant Requests</h4>
+      {plantRequest.length > 0 ? (
+        <>
+          {renderPlantRequests()}
+          {plantRequest.length > 5 && (
+            <ToggleButtonGroup type="checkbox" className="mt-3">
+              <ToggleButton
+                id="showMoreToggle"
+                type="checkbox"
+                variant="outline-primary"
+                value={1}
+                onChange={handleToggle}
+              >
+                {showMore ? "Show less" : "Show more"}
+              </ToggleButton>
+            </ToggleButtonGroup>
+          )}
+        </>
+      ) : (
+        <p>No plant requests found.</p>
+      )}
+    </div>
   );
-};
+}
 
 export default PlantRequestForm;

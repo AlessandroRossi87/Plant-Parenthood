@@ -142,10 +142,6 @@ const Plant = (props) => {
     }
   };
 
-  const handleRequest = async () => {
- 
-  };
-
   return (
     <Card className={styles.Plant}>
       <Card.Body>
@@ -255,13 +251,16 @@ const Plant = (props) => {
               <i className="fa-solid fa-seedling" />
             </OverlayTrigger>
           ) : plant_request_id ? (
-            <span onClick={handleRequest}>
-              <i className={`fa-solid fa-seedling ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Plant request already sent!</Tooltip>}
+            >
+              <i className="fa-solid fa-seedling" />
+            </OverlayTrigger>
+          ) : currentUser ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Click to request a plant child!</Tooltip>}
             >
               <i className="fa-solid fa-seedling" />
             </OverlayTrigger>
