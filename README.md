@@ -1,17 +1,17 @@
 # Plant Parenthood
 
-Body Doodles is a social media platform for Tattoo Artists and ink lovers. Users are able to share their tattoo's, designs they have made or like as well as allowing Artists to showcase their work.
+Plant Parenthood is a social media platform for plant lovers. Users are able to share their plants, comment on each other plants and even offer and request plant offsprings.
 <br>
-The live link can be found here: [Live Site - Sizzle and Steak](https://body-doodles.onrender.com/)
+The live link can be found here: XXX
 <br>
 
-![Mockup](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/mockup.JPG)
+![Mockup](xxx)
 
 ## The Strategy Plane
 
 ### Site Goals
 
-Body Doodles is aimed at all tattoo enthusiasts and tattoo artists. The site aims to connect users with tattooists, to allow them to showcase their work, artist information as well as sharing tattoos for visual pleasure.
+Plant Parenthood is aimed at all plant enthusiasts. The site aims to connect users with other plant owners, to allow them to showcase their plants, share best practices.
 <hr>
 
 ### Agile Planning
@@ -20,9 +20,9 @@ This project was developed using agile methodologies by delivering small feature
 
 All stories were assigned to epics, prioritized under the labels, Must have, should have, could have and assigned to sprints. "Must have" stories were completed first, "should haves" and then finally "could haves". It was done this way to ensure that all core requirements were completed first to give the project a complete feel, with the nice to have features being added should there be capacity.
 
-The Kanban board was created using github projects and can be located [here](https://github.com/users/Gareth-McGirr/projects/1/views/1) and can be viewed to see more information on the project cards. All stories except the documentation tasks have a full set of acceptance criteria in order to define the functionality that marks that story as complete.
+The Kanban board was created using github projects and can be located [here](xxxx) and can be viewed to see more information on the project cards. All stories except the documentation tasks have a full set of acceptance criteria in order to define the functionality that marks that story as complete.
 
-![Kanban](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles-api/main/readme/kanban.PNG)
+![Kanban](xxx)
 
 <hr>
 
@@ -135,7 +135,7 @@ Implementation:
 
 A site favicon was implemented with the sites logo. This will allow users to easily identify Body Doodles when they have multiple tabs open.
 
-![favicon](https://github.com/Gareth-McGirr/body-doodles/blob/main/readme/images/favicon_screenshot.png)
+![favicon](xxx)
 
 User Story:
 
@@ -183,7 +183,7 @@ When a user is logged in the following navigation items are shown:
 * Sign Out
 * Users Icon and Username
 
-![navbar_loggedin_expanded](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/navbar_loggedin_expanded.png)
+![navbar_loggedin_expanded](xxx)
 
 Logged out users:
 
@@ -191,7 +191,7 @@ Logged out users:
 * Sign In
 * Sign Up
 
-![navbar_loggedout](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/navbar_logged_out.png)
+![navbar_loggedout](xxx)
 
 The site logo is displayed on the left side of the navigation at all times.
 
@@ -236,7 +236,7 @@ Implementation:
 
 A post detail page has been added that is visible to all users, this will allw them to see the full post detail and comments.
 
-![post_detail](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/postdetail.png)
+![post_detail](xxx)
 
 
 User Stories:
@@ -247,7 +247,7 @@ Implementation:
 
 Logged in users have full access to post, comment, like or unlike. This will help ensure that unregistered users do not spam the website while also ensuring genuine users register to the site.
 
-![post_like_comment](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/post_like_comments.png)
+![post_like_comment](xxx)
 
 User Story:
 
@@ -266,7 +266,7 @@ Implementation:
 
 A Post button has been implemented in the nav bar in order for logged in users to create a post when they want to share something.
 
-![post_create](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/post_create.png)
+![post_create](xxx)
 
 User Story:
 
@@ -292,13 +292,13 @@ Implementation:
 
 A search bar has been added that will allow users to search for keywords so that they can search for content that interests them.
 
-![post_searchbar](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/posts_searchbar.png)
+![post_searchbar](xxx)
 
 **Comments**
 
 Below each post, there will be a comment box available to logged in users. This will allow users to add comments under posts.
 
-![comment_create](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/comment_create.png)
+![comment_create](xxx)
 
 A comment count will also be shown under the post, to allow users to see how many people have commented on each post.
 
@@ -306,7 +306,7 @@ A comment or updated time will be displayed in either minutes ago or days ago
 
 The username and Avatar of the user that created the comment will displayed on each comment
 
-![comments_list_under_post](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/comments_list_under_post.png)
+![comments_list_under_post](xxx)
 
 **Profiles**
 
@@ -328,7 +328,7 @@ Implementation:
 
 If the user is the owner of the profile, they are able to edit the profile via the profile form accessed via the three dot drop down menu on the profile.
 
-![profile_edit](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/profile_edit.png)
+![profile_edit](xxx)
 
 User Story:
 
@@ -338,7 +338,7 @@ Implemenation:
 
 The drop down menu also allows the user to edit their user name or password by clicking the menu options and filling in the forms.
 
-![profile_change_password](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/profile_change_password.png)
+![profile_change_password](xxx)
 
 
 User Story:
@@ -349,7 +349,7 @@ Implementation:
 
 When a user is logged in, their profile image is on display in the top right of the nav. This will allow the user to easily know when they are logged in and which account (if they have multiple)
 
-![nav_loggedin_Avatar](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/navv_logged_in_Avatar.png)
+![nav_loggedin_Avatar](xxx)
 
 **Most followed profiles**
 
@@ -384,7 +384,7 @@ Users can register as an artist via their profile page by clicking the 3 dots to
 
 Users can also unregister as an artist by selecting remove as artist button on the profile. This button is only displayed to owners of a profile.
 
-![artist_register](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/add_remove_artst.PNG)
+![artist_register](xxx)
 
 User Story:
 
@@ -396,9 +396,9 @@ Artist information is able to be viewed on the artists user profile. This will a
 
 An Artist page has also been implemented to allow users to view all artist details in a list.
 
-![artist_info_profile](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/artist_info_profile.png)
+![artist_info_profile](xxx)
 
-![artist_info_list](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/artist_info_list.png)
+![artist_info_list](xxx)
 
 **Artist Reviews**
 
@@ -412,7 +412,7 @@ A leave a review button is present if the user is not the owner of the profile s
 
 Users are able to leave textual reviews on artists along with a rating out of 5 by filling in the review form that can be accessed by clicking Leave Review on the artists user profile.
 
-![artist_review](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/review_artist.png)
+![artist_review](xxx)
 
 A star rating component was used to allow users to easily click the number of stars they wish to give as a rating. 
 
@@ -432,7 +432,7 @@ Implementation:
 
 A contact form was added to the navigation that will allow users to submit a contact request if they have any issues or queries.
 
-![contact](https://raw.githubusercontent.com/Gareth-McGirr/body-doodles/main/readme/images/contact.PNG)
+![contact](xxx)
 
 <br>
 
