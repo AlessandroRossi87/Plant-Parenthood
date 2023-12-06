@@ -12,9 +12,9 @@ function PlantRequestForm({ plantRequest, isOwner, onApprove, onDeny, onCancelRe
   const renderPlantRequest = (request) => (
     <div key={request.id} className="d-flex align-items-center justify-content-between p-2 border-bottom">
       <div className="d-flex align-items-center">
-        <Image className="mr-2" src={request.plant.previewImage} rounded style={{ width: "50px", height: "50px" }} />
+      <Image className="mr-2" src={request.plant && request.plant.previewImage} rounded style={{ width: "50px", height: "50px" }} />
         <div>
-          <p className="mb-0">{request.requester.username}</p>
+          <p className="mb-0">{request.requester && request.requester.username}</p>
         </div>
       </div>
       {isOwner ? (
@@ -35,6 +35,9 @@ function PlantRequestForm({ plantRequest, isOwner, onApprove, onDeny, onCancelRe
   );
 
   const renderPlantRequests = () => {
+    if (plantRequest.length === 0) {
+      return <p>No plant requests found.</p>;
+    }
     const requestsToDisplay = showMore ? plantRequest : plantRequest.slice(0, 5);
 
     return requestsToDisplay.map((request) => renderPlantRequest(request));

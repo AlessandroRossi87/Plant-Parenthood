@@ -30,6 +30,7 @@ import PlantRequestForm from "../plant_requests/PlantRequestForm";
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePlants, setProfilePlants] = useState({ results: [] });
+  const [plantRequests, setPlantRequests] = useState([]);
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -76,12 +77,16 @@ function ProfilePage() {
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/plants/?owner__profile=${id}`),
-          ]);
+        ]);
+        const { data: fetchedPlantRequests } = 
+          await axiosReq.get(`/plants/?plant=${id}/request/`);
+
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePlants(profilePlants);
+        setPlantRequests(fetchedPlantRequests.results);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -139,6 +144,13 @@ function ProfilePage() {
         </Col>
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
+      <PlantRequestForm
+        plantRequest={plantRequests}
+        isOwner={is_owner}
+        onApprove={handleApprove}
+        onDeny={handleDeny}
+        onCancelRequest={handleCancelRequest}
+      />
     </>
   );
 
@@ -163,13 +175,6 @@ function ProfilePage() {
           message={`No results found, ${profile?.owner} hasn't posted any plants yet.`}
         />
       )}
-      <PlantRequestForm
-        plantRequest={`profile?.plants/${id}/request/`}
-        isOwner={is_owner}
-        onApprove={handleApprove}
-        onDeny={handleDeny}
-        onCancelRequest={handleCancelRequest}
-      />
     </>
   );
 

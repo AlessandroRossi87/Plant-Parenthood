@@ -142,6 +142,15 @@ const Plant = (props) => {
     }
   };
 
+  const handlePlantRequest = async () => {
+    try {
+      const { data } = await axiosRes.post(`plants/${id}/request/`, { plant: id });
+      console.log("Plant request sent successfully:", data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <Card className={styles.Plant}>
       <Card.Body>
@@ -262,7 +271,9 @@ const Plant = (props) => {
               placement="top"
               overlay={<Tooltip>Click to request a plant child!</Tooltip>}
             >
+            <span onClick={handlePlantRequest}>
               <i className="fa-solid fa-seedling" />
+            </span>
             </OverlayTrigger>
           ) : (
             <OverlayTrigger
