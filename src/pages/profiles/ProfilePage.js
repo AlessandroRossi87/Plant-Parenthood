@@ -145,11 +145,11 @@ function ProfilePage() {
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
       <PlantRequestForm
-        id={currentUser?.profile_id}
-        isOwner={is_owner}
-        onApprove={handleApprove}
-        onDeny={handleDeny}
-        onCancelRequest={handleCancelRequest}
+        // id={currentUser?.profile_id}
+        // isOwner={is_owner}
+        // onApprove={handleApprove}
+        // onDeny={handleDeny}
+        // onCancelRequest={handleCancelRequest}
       />
     </>
   );
