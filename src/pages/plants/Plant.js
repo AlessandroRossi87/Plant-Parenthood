@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Plant.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -31,7 +31,7 @@ const Plant = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const history = useHistory()
+  const history = useHistory();
 
   const handleEdit = () => {
     history.push(`/plants/${id}/edit`);
@@ -46,19 +46,24 @@ const Plant = (props) => {
     }
   };
 
+  const [reactionClicked, setReactionClicked] = React.useState(false);
+
   const handleHydrate = async () => {
-    try {
-      const { data } = await axiosRes.post("/reactions/", { plant: id, reaction_type: 1 });
-      setPlants((prevPlants) => ({
-        ...prevPlants,
-        results: prevPlants.results.map((plant) => {
-          return plant.id === id
-            ? { ...plant, hydrate_count: plant.hydrate_count + 1, reactions_id: data.id }
-            : plant;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
+    if (!reactionClicked) {
+      try {
+        const { data } = await axiosRes.post("/reactions/", { plant: id, reaction_type: 1 });
+        setPlants((prevPlants) => ({
+          ...prevPlants,
+          results: prevPlants.results.map((plant) => {
+            return plant.id === id
+              ? { ...plant, hydrate_count: plant.hydrate_count + 1, reactions_id: data.id }
+              : plant;
+          }),
+        }));
+        setReactionClicked(true);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -203,8 +208,8 @@ const Plant = (props) => {
             </OverlayTrigger>
           )}
           {dry_count}
-          </div>
-          <div>
+        </div>
+        <div>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
@@ -224,9 +229,9 @@ const Plant = (props) => {
               placement="top"
               overlay={<Tooltip>Click to request a plant child!</Tooltip>}
             >
-            <span onClick={handlePlantRequest}>
-              <i className="fa-solid fa-seedling" />
-            </span>
+              <span onClick={handlePlantRequest}>
+                <i className="fa-solid fa-seedling" />
+              </span>
             </OverlayTrigger>
           ) : (
             <OverlayTrigger
