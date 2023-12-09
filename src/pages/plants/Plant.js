@@ -4,7 +4,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosRes, axiosReq } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Plant = (props) => {
@@ -62,22 +62,6 @@ const Plant = (props) => {
     }
   };
 
-  const handleUnhydrate = async () => {
-    try {
-      await axiosRes.delete(`/reactions/${reactions_id}/`);
-      setPlants((prevPlants) => ({
-        ...prevPlants,
-        results: prevPlants.results.map((plant) => {
-          return plant.id === id
-            ? { ...plant, hydrate_count: plant.hydrate_count - 1, reactions_id: null }
-            : plant;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const handleMoist = async () => {
     try {
       const { data } = await axiosRes.post("/reactions/", { plant: id, reaction_type: 2 });
@@ -86,22 +70,6 @@ const Plant = (props) => {
         results: prevPlants.results.map((plant) => {
           return plant.id === id
             ? { ...plant, moist_count: plant.moist_count + 1, reactions_id: data.id }
-            : plant;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleUnmoist = async () => {
-    try {
-      await axiosRes.delete(`/reactions/${reactions_id}/`);
-      setPlants((prevPlants) => ({
-        ...prevPlants,
-        results: prevPlants.results.map((plant) => {
-          return plant.id === id
-            ? { ...plant, moist_count: plant.moist_count - 1, reactions_id: null }
             : plant;
         }),
       }));
@@ -126,30 +94,27 @@ const Plant = (props) => {
     }
   };
 
-  const handleUndry = async () => {
-    try {
-      await axiosRes.delete(`/reactions/${reactions_id}/`);
-      setPlants((prevPlants) => ({
-        ...prevPlants,
-        results: prevPlants.results.map((plant) => {
-          return plant.id === id
-            ? { ...plant, dry_count: plant.dry_count - 1, reactions_id: null }
-            : plant;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const handlePlantRequest = async () => {
     try {
-      const { data } = await axiosRes.post(`plants/${id}/request/`, { plant: id });
-      console.log("Plant request sent successfully:", data);
-    } catch (err) {
-      console.log(err);
+      console.log('icurrentUser:', currentUser);
+      const requestData = {
+        plant: id,
+        requester: currentUser.profile_id,
+        request_date: new Date().toISOString(),
+        is_approved: false,
+      };
+
+      console.log('Request Data:', requestData);
+      console.log('Axios Request Config:', axiosReq.post);
+
+      const response = await axiosReq.post(`/plants/${id}/request/`, requestData);
+      const newPlantRequest = response.data;
+  
+      console.log('Plant request created successfully:', newPlantRequest);
+    } catch (error) {
+      console.error('Error creating plant request:', error.response.data);
     }
-  }
+  };
 
   return (
     <Card className={styles.Plant}>
@@ -185,10 +150,6 @@ const Plant = (props) => {
             >
               <i className="fa-solid fa-shower" />
             </OverlayTrigger>
-          ) : reactions_id ? (
-            <span onClick={handleUnhydrate}>
-              <i className={`fa-solid fa-shower ${styles.Hydrate}`} />
-            </span>
           ) : currentUser ? (
             <span onClick={handleHydrate}>
               <i className={`fa-solid fa-shower ${styles.HydrateOutline}`} />
@@ -209,10 +170,6 @@ const Plant = (props) => {
             >
               <i className="fa-solid fa-faucet-drip" />
             </OverlayTrigger>
-          ) : reactions_id ? (
-            <span onClick={handleUnmoist}>
-              <i className={`fa-solid fa-faucet-drip ${styles.Moist}`} />
-            </span>
           ) : currentUser ? (
             <span onClick={handleMoist}>
               <i className={`fa-solid fa-faucet-drip ${styles.MoistOutline}`} />
@@ -233,10 +190,6 @@ const Plant = (props) => {
             >
               <i className="fa-solid fa-sun-plant-wilt" />
             </OverlayTrigger>
-          ) : reactions_id ? (
-            <span onClick={handleUndry}>
-              <i className={`fa-solid fa-sun-plant-wilt ${styles.Dry}`} />
-            </span>
           ) : currentUser ? (
             <span onClick={handleDry}>
               <i className={`fa-solid fa-sun-plant-wilt ${styles.DryOutline}`} />

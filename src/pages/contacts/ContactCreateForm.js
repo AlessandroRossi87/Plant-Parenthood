@@ -12,7 +12,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import useRedirect from "../../hooks/useRedirect";
 
 const ContactCreateForm = () => {
-  useRedirect("loggedout");
+  const ownerId = parseInt(profile.id);
   const [errors, setErrors] = useState({});
 
   const [contactData, setContactData] = useState({
@@ -38,16 +38,22 @@ const ContactCreateForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
+  
     formData.append("subject", subject);
     formData.append("content", content);
-
+    formData.append("owner", ownerId);
+  
+    console.log("Form Data:", Object.fromEntries(formData));
+  
     try {
-      await axiosReq.post("/contact/", formData);
+      const response = await axiosReq.post("/contact/", formData);
+      console.log("Server Response:", response);
       history.goBack();
       handleShow();
     } catch (err) {
+      console.error("Error:", err);
       if (err.response?.status !== 401) {
+        console.error("Server Error Details:", err.response?.data);
         setErrors(err.response?.data);
       }
     }

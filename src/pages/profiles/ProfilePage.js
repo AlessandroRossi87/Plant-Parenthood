@@ -145,7 +145,7 @@ function ProfilePage() {
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
       <PlantRequestForm
-        plantRequest={plantRequests}
+        id={currentUser?.profile_id}
         isOwner={is_owner}
         onApprove={handleApprove}
         onDeny={handleDeny}
