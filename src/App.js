@@ -15,7 +15,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ContactCreateForm from "./pages/contacts/ContactCreateForm";
-import PlantRequestForm from "./pages/plant_requests/PlantRequestForm";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -79,13 +79,8 @@ function App() {
             path="/contact/create/"
             render={() => <ContactCreateForm />}
           />
-          <Route
-            exact
-            path="plants/:id/request/"
-            render={() => <PlantRequestForm />}
-          />
 
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>

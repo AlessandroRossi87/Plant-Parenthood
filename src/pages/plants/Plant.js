@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../styles/Plant.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Tooltip from "react-bootstrap/Tooltip";
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes, axiosReq } from "../../api/axiosDefaults";
@@ -14,7 +17,6 @@ const Plant = (props) => {
     profile_id,
     profile_image,
     comments_count,
-    reactions_id,
     hydrate_count,
     moist_count,
     dry_count,

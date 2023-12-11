@@ -12,9 +12,8 @@ import btnStyles from "../../styles/Button.module.css";
 
 import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
-import { axiosRes, axiosReq } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
   useSetProfileData,
@@ -25,12 +24,10 @@ import Plant from "../plants/Plant";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import PlantRequestForm from "../plant_requests/PlantRequestForm";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePlants, setProfilePlants] = useState({ results: [] });
-  const [plantRequests, setPlantRequests] = useState([]);
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -41,34 +38,6 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
-  const history = useHistory()
-
-  const handleApprove = async () => {
-    try {
-      await axiosRes.post(`/plant-requests/${id}/approve`);
-      console.log('Request approved:')
-    } catch (err) {
-      console.log(err)
-    }
-  };
-
-  const handleDeny = async () => {
-    try {
-      await axiosRes.post(`/plant-requests/${id}/deny`);
-      console.log('Request denied:')
-    } catch (err) {
-      console.log(err)
-    }
-  };
-
-  const handleCancelRequest = async () => {
-    try {
-      await axiosRes.delete(`/plants/${id}/request`);
-      history.goBack();
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,15 +47,11 @@ function ProfilePage() {
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/plants/?owner__profile=${id}`),
         ]);
-        const { data: fetchedPlantRequests } = 
-          await axiosReq.get(`/plants/?plant=${id}/request/`);
-
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePlants(profilePlants);
-        setPlantRequests(fetchedPlantRequests.results);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -144,13 +109,6 @@ function ProfilePage() {
         </Col>
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
-      <PlantRequestForm
-        // id={currentUser?.profile_id}
-        // isOwner={is_owner}
-        // onApprove={handleApprove}
-        // onDeny={handleDeny}
-        // onCancelRequest={handleCancelRequest}
-      />
     </>
   );
 
