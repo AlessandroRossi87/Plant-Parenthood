@@ -1,8 +1,8 @@
 # Plant Parenthood
 
-Plant Parenthood is a social media platform for plant lovers. Users are able to share their plants, comment on each other plants and even offer and request plant offsprings.
+Plant Parenthood is a social media platform for plant lovers. Users are able to share their plants, comment on each other plants.
 <br>
-The live link can be found here: XXX
+The live link can be found [here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
 <br>
 
 ![Mockup](xxx)
@@ -11,16 +11,13 @@ The live link can be found here: XXX
 
 ### Site Goals
 
-Plant Parenthood is aimed at all plant enthusiasts. The site aims to connect users with other plant owners, to allow them to showcase their plants, share best practices.
+Plant Parenthood is aimed at all plant enthusiasts. The site aims to connect users with other plant owners, to allow them to showcase their plants, share best practices and receive feedback about how good of a plant parent the user is!
 <hr>
 
 ### Agile Planning
 
-This project was developed using agile methodologies by delivering small features in incremental sprints. There were 3 sprints in total, spaced out evenly over three weeks.
-
-All stories were assigned to epics, prioritized under the labels, Must have, should have, could have and assigned to sprints. "Must have" stories were completed first, "should haves" and then finally "could haves". It was done this way to ensure that all core requirements were completed first to give the project a complete feel, with the nice to have features being added should there be capacity.
-
-The Kanban board was created using github projects and can be located [here](xxxx) and can be viewed to see more information on the project cards. All stories except the documentation tasks have a full set of acceptance criteria in order to define the functionality that marks that story as complete.
+I have developed this project by using agile methodologies by separating the small features in different epics. All user stories were assigned to different epics, subsequently divided between "Must have", "Should have" in order of priority and "Won't have" was added for those features planned at first but at the end discarted because of time constringements.
+I created the Kanban board in GitHub projects and can be found [here](https://github.com/users/AlessandroRossi87/projects/6/views/1).
 
 ![Kanban](xxx)
 
@@ -30,35 +27,35 @@ The Kanban board was created using github projects and can be located [here](xxx
 
 **Authentications**
 
-This Epic covers the authentication features
+This Epic covers the authentication features like sign in and sign out.
 
 **Navigation**
 
-This epic covers the front end creation of the application in regards to posts. This is to allow users to interact with the backend API via the user interface in order to create, read, update and delete their own posts.
+This epic covers the navigation and scrolling features of the application. This allows users to navigate around and access all features of the website.
 
 **Plants**
 
-This epic covers the front end creation of the application in regards to comments on posts. This is to allow users to interact with the backend API in order add comments on posts.
+This epic covers the front end creation of "plants", the application's name for posts. This is to allow users to share their plants with pictures and receive feedback through reactions and comments.
 
 **Comments**
 
-This epic covers the front end creation of the application in regards to user profiles. This is to allow users to interact with the backend API via the user interface to manage their own profiles.
+This epic covers the front end creation of comments underneath plants. This is to allow users to create comments and interact with other users.
 
 **Profile**
 
-This epic covers the front end creation of the application in regards to artists. This is to allow users to interact with the backend API and register/unregister themselves as artists and display their artist information.
+This epic covers the front end creation of the application with creating profiles. This is to allow users to interact with the backend API to create a profile, share plants and react and comment to other users' plants.
 
 **Followers**
 
-This epic covers the front end creation of the application in regards to artist reviews. This is to allow users to interact with the backend API via the user interface allow users to leave reviews on specific artists.
+This epic covers the front end creation of the application with followers. This is to allow users to interact with the backend API via the user interface and allow users to become each other's followers so that their plants can be visualized in the "feed"
 
 **Plant Request**
 
-This epic covers the front end creation of the application in regards to artist reviews. This is to allow users to interact with the backend API via the user interface allow users to leave reviews on specific artists.
+This epic covers the front end creation of the application in regards to plant request. This allows the user to interact with the backend API via the user interface to offer "plant children", or offspring, for each of their plant or request plant children from others. This epic was discarted because of time constringement and can be now considered a future implementation.
 
 **Contact**
 
-This epic covers the front end creation of the application in regards to artist reviews. This is to allow users to interact with the backend API via the user interface allow users to leave reviews on specific artists.
+This epic covers the front end creation of the application contact form. This is to allow users to interact with the backend API via the user interface allow users to contact the website's administrator.
 <hr>
 <br>
 
