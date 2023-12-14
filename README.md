@@ -68,7 +68,6 @@ By Epic:
 * As a User I can Sign Up so that I can interact with other users
 * As a User I can Log In so that I can Post, Comment, Request and React
 * As a User I can Log Out so that I can exit the website
-* As a Logged Out User I can either Sign Up or Log In
 
 **Navigation**
 
@@ -112,8 +111,15 @@ By Epic:
 
 **Plant Request**
 
+* As a User I can request a plant child from another user
+* As a User I can cancel my plant request so that I undo my request
+* As a User I can approve a plant request so that the requester can receive my plant child
+* As a User I can deny a plant request so that the requester can't receive my plant child
+
 
 **Contact**
+
+* As a User I can send a message to the admin so that I can communicate an issue
 
 <hr>
 <br>
@@ -122,63 +128,67 @@ By Epic:
 
 ## Features:
 
-**Setup**
+**Authentications**
 
 User Story:
 
-`As a user, I would like a favicon on the website so that I can easily know which tab belongs to body doodles`
+`As a User I can Sign Up so that I can interact with other users`
 
 Implementation:
 
-A site favicon was implemented with the sites logo. This will allow users to easily identify Body Doodles when they have multiple tabs open.
+A signup page was implemented with Django Rest Framework (DRF) authentication. Underneath the signup for there is a signin form in case the user already has an account.
 
-![favicon](xxx)
 
 User Story:
 
-`As a logged out user I can see sign in and sign up options so that I can sign in / sign up`
+`As a User I can Log In so that I can Post, Comment, Request and React`
 
 Implementation:
 
-Checks were implemented to detect when a user is signed in or signed out and nav items displayed accordingly. This will prevent users from being able to click buttons from the UI in order to reach restricted pages.
-
-Redirects on the URLS was also implemented to ensure users cannot access pages when logged out if they are for logged in users only.
+Only logged in users can add a plant, comment, follow and react to other plants. It was made sure that navbar shows different options accordingly to logged in or logged out users.
 
 
 User Story:
 
-`As a user, I would like a fully responsive navigation menu so that I can easily access the site from any device`
+`As a User I can Log Out so that I can exit the website`
+
+Implementation:
+
+A "sign out" button is visible on the navbar only to logged in users. 
+
+
+User Story:
+
+`As a User I can Log Out so that I can exit the website`
 
 Implementation:
 
 A navigation menu was implemented than collapses into a hamburger menu on smaller devices.
 This will ensure that no navigation items overlap and users can access and navigate the site from any size device.
 
-**Navigation Menu**
+**Navigation**
 
 User Stories:
 
-` As a logged out user I can see sign in and sign up options so that I can sign in / sign up`
-
-`As a user, I would like a fully responsive navigation menu so that I can easily access the site from any device`
+`As a User I can see the Navbar so I can reach all pages of the website`
 
 Implementation:
 
-A fully responsive navigation menu has been implemented across the website.
+Navigation menu is implemented on top of the page, it collapses into a hamburger menu on small screens. It ensures navigation on each type of screen.
 
-This will allow the users to navigate to different pages on the website with ease from any device. Nav items are different depending on the users logged in state to prevent them accessing areas of the application intended for signed in users.
+Logged in users can see different features on the navbar than the logged out users.
 
 Logged in users:
 
 When a user is logged in the following navigation items are shown:
 
-* Add Post
+* Add plant
 * Home
-* Artists
-* Feed
-* Liked
+* Feed 
+* Reacted
+* Contact Us
 * Sign Out
-* Users Icon and Username
+* User Icon and Username
 
 ![navbar_loggedin_expanded](xxx)
 
@@ -192,63 +202,59 @@ Logged out users:
 
 The site logo is displayed on the left side of the navigation at all times.
 
-The navigation icons change to a gold colour when the page is active. This is to indicate to users which page they are currently on.
+The navigation icons change to a light green colour when the page is active in order to indicate which page the user is currently on.
 
-**Home**
 
 User Story:
 
-`As a user I can view all the most recent posts, ordered by most recently created first so that I am up to date with the newest content`
+`As a User I can scroll down to see all the Plants`
 
 Implementation:
 
-The home page displays user posts in order of newest posts first. These posts are visible to all users regardless of logged in status. This will allow non registered users to get a feel for the content on the site to know whether they are interested in signing up.
+An infinite scroll has been implemented on the home page to display all plants starting with the most recent. Both logged in and logged out users can display the plants on the homepage.
 
-Restricted access has been implemented on the posts for users who are not signed in, they will not be able to create a post, like or comment on posts.
+By making the contect accessable also to non registered users gives them the possibility to see the content of the web application and make them interested in signing up.
 
 
-**Posts**
+**Plants**
 
 User Story:
 
-`As a user I can keep scrolling through the images on the site, that are loaded for me automatically so that I don't have to click on "next page"`
+`As a User I can post a Plant so that I can share my plants`
 
 Implementation:
 
-Infinite scrolling was implemented to load 10 posts at a time and when user reaches the end of the scroll, it will load 10 more and so on. This will allow for optimal load times to enhance viewing pleasure.
+An "Add plant" button is implemented in the navbar and is visible to signed in users. The button is visible at all time even on small screens, where it is placed outside the hamburger menu. This way it allows the users to add plants even more easily and enhance the use of the web application.
 
 User Story:
 
-`As a user I can view all the most recent posts, ordered by most recently created first so that I am up to date with the newest content`
+`As a User I can edit a Plant so that I can update the information`
 
 Implementaton:
 
-The posts page, feed and liked pages are all ordered by newest content first. This will prevent users from being shown content they have already seen at the top and reduce the need for them to 'search' for new content.
+Users who are owner of a plant have the possibility to edit their plant by clicking on the three dots on the top right corner of their plant. This way they can update plant information, for example its taxonomy, enhancing the collaborative nature of this web application.
 
 User Story:
 
-`As a user I can view the details of a single post so that I can learn more about it`
+`As a User I can delete a Plant so that it disappears from the feed`
 
 Implementation:
 
-A post detail page has been added that is visible to all users, this will allw them to see the full post detail and comments.
-
-![post_detail](xxx)
+Similaryl to the edit function, the plant owner can click on the three dots on the top right corner of their plant and delete it from the web application. It can happen that plants die, so the user can keep their plant collection updated.
 
 
 User Stories:
 
-`As a logged in user I can like a post so that I can show my support for the posts that interest me`
+`As a User I can view all other Plants`
 
 Implementation:
 
-Logged in users have full access to post, comment, like or unlike. This will help ensure that unregistered users do not spam the website while also ensuring genuine users register to the site.
+Both logged in and logged out users have access to plants and their details. They can read comments ans see how many times plants have been reacted too. This is in order to engage new users and make them want to sign up.
 
-![post_like_comment](xxx)
 
 User Story:
 
-`As a post owner I can edit my post title and description so that I can make corrections or update my post after it was created`
+`As a User I can click on a Plant so that I can see more details`
 
 Implementation:
 
