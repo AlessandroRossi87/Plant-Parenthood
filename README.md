@@ -258,56 +258,50 @@ User Story:
 
 Implementation:
 
-Only the user who created the post will be able to edit or delete that post. This will ensure that users have full control of their own posts and unauthorized users cannot tamper with them.
+All users can click on the image of a plant and see its details, like the plant text. They can see what the plant owner has written.
 
 
 User Story:
 
-`As a logged in user I can create posts so that I can share my images`
+`As a User I can React to a Plant so that I can show what I think about it`
 
 Implementation:
 
-A Post button has been implemented in the nav bar in order for logged in users to create a post when they want to share something.
+Logged in users have the possibility to react in three different ways to other people's plants. Hydrate, for positive feedback, Moist, for intermediate feedback, and Dry for bad feedback. Logged out users cannot react and are shown a message when hovering over the icons. A user cannot react to their own plants and they are also informed about this while overing. The number of each reaction is display underneath each plant
 
-![post_create](xxx)
 
 User Story:
 
-`As a logged in user I can view content filtered by users I follow so that I can keep up to date with what they are posting about`
+`As a User I can see what Plants I reacted to so I can see my feedback`
 
 Implementation:
 
-Users can also click the Feed navigation item and this will display only posts from users the person has followed.
+Logged in users can click on "Reacted" so they can access all plants they have ever reacted to.
 
 User Story:
 
-`As a logged in user I can view the posts I liked so that I can find the posts I enjoy the most`
+`As a User I can search Plants so that I can see the plants I am interested in`
 
 Implementation:
 
-Users can click the liked navigation item and display all of the posts they have liked.
+All users can search for any term within plants in the search bar at the top of the home page. This way they can look for specific plants, through the toxology, and all terms within the plant posts.
 
 User Story:
 
-`As a user, I can search for posts with keywords, so that I can find the posts and user profiles I am most interested in.`
+`As a User I can follow another User so that I can stay updated on what they post`
 
 Implementation:
 
-A search bar has been added that will allow users to search for keywords so that they can search for content that interests them.
+Logged in users can follow other users so that their plants appear under "Feed" and they can stay up to date with all plants from their favorite users.
 
-![post_searchbar](xxx)
 
 **Comments**
 
-Below each post, there will be a comment box available to logged in users. This will allow users to add comments under posts.
+Comments are visible under each plant for both logged out and logged in users. Logged in users have the possibility to add comments under each plant.
 
 ![comment_create](xxx)
 
-A comment count will also be shown under the post, to allow users to see how many people have commented on each post.
-
-A comment or updated time will be displayed in either minutes ago or days ago 
-
-The username and Avatar of the user that created the comment will displayed on each comment
+An icon display the number of comments under each plant, to allow users to see which plants have most comments. Each comment will show the clickable username of its author and their Avatar.
 
 ![comments_list_under_post](xxx)
 
