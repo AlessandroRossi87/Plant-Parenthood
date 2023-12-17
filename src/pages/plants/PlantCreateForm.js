@@ -29,11 +29,10 @@ function PlantCreateForm() {
     description: "",
     image: "",
     taxonomy: [],
-    plant_children: 0,
   });
   const [taxonomyChoices, setTaxonomyChoices] = useState([]);
 
-  const { title, taxonomy, description, plant_children, image } = plantData;
+  const { title, taxonomy, description, image } = plantData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -78,7 +77,6 @@ function PlantCreateForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("taxonomy_choices", taxonomy);
-    formData.append("plant_children", plant_children);
 
     if (imageInput.current.files.length) {
       formData.append("image", imageInput.current.files[0]);
@@ -138,20 +136,6 @@ function PlantCreateForm() {
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-      <Form.Group>
-        <Form.Label>Plant Children</Form.Label>
-        <Form.Control
-          type="number"
-          name="plant_children"
-          value={plant_children}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.plant_children?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

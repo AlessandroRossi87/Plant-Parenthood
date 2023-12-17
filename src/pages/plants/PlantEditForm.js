@@ -25,11 +25,10 @@ function PlantEditForm() {
     description: "",
     image: "",
     taxonomy: [],
-    plant_children: 0,
   });
   const [taxonomyChoices, setTaxonomyChoices] = useState([]);
 
-  const { title, taxonomy, description, plant_children, image } = plantData;
+  const { title, taxonomy, description, image } = plantData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -39,9 +38,9 @@ function PlantEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/plants/${id}/`);
-        const { title, description, image, taxonomy, plant_children, is_owner } = data;
+        const { title, description, image, taxonomy, is_owner } = data;
 
-        is_owner ? setPlantData({ title, description, image, taxonomy, plant_children }) : history.push("/");
+        is_owner ? setPlantData({ title, description, image, taxonomy }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -90,7 +89,6 @@ function PlantEditForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("taxonomy_choices", taxonomy);
-    formData.append("plant_children", plant_children);
 
     if (imageInput.current.files.length) {
       formData.append("image", imageInput.current.files[0]);
@@ -150,20 +148,6 @@ function PlantEditForm() {
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-      <Form.Group>
-        <Form.Label>Plant Children</Form.Label>
-        <Form.Control
-          type="number"
-          name="plant_children"
-          value={plant_children}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.plant_children?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

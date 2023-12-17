@@ -22,8 +22,6 @@ const Plant = (props) => {
     dry_count,
     title,
     description,
-    plant_request_id,
-    plant_children,
     taxonomy_choices,
     image,
     updated_at,
@@ -98,28 +96,6 @@ const Plant = (props) => {
       }));
     } catch (err) {
       console.log(err);
-    }
-  };
-
-  const handlePlantRequest = async () => {
-    try {
-      console.log('icurrentUser:', currentUser);
-      const requestData = {
-        plant: id,
-        requester: currentUser.profile_id,
-        request_date: new Date().toISOString(),
-        is_approved: false,
-      };
-
-      console.log('Request Data:', requestData);
-      console.log('Axios Request Config:', axiosReq.post);
-
-      const response = await axiosReq.post(`/plants/${id}/request/`, requestData);
-      const newPlantRequest = response.data;
-  
-      console.log('Plant request created successfully:', newPlantRequest);
-    } catch (error) {
-      console.error('Error creating plant request:', error.response.data);
     }
   };
 
@@ -212,38 +188,6 @@ const Plant = (props) => {
           {dry_count}
         </div>
         <div>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't request your own plant!</Tooltip>}
-            >
-              <i className="fa-solid fa-seedling" />
-            </OverlayTrigger>
-          ) : plant_request_id ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Plant request already sent!</Tooltip>}
-            >
-              <i className="fa-solid fa-seedling" />
-            </OverlayTrigger>
-          ) : currentUser ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Click to request a plant child!</Tooltip>}
-            >
-              <span onClick={handlePlantRequest}>
-                <i className="fa-solid fa-seedling" />
-              </span>
-            </OverlayTrigger>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to request plants!</Tooltip>}
-            >
-              <i className="fa-solid fa-seedling" />
-            </OverlayTrigger>
-          )}
-          {plant_children}
           <Link to={`/plants/${id}`}>
             <i className="far fa-comments" />
           </Link>
