@@ -412,6 +412,7 @@ Contact Us
 
 ![Contact](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/contact.png)
 
+</details>
 
 ## The Surface Plane
 
