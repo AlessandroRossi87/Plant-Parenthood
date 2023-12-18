@@ -309,133 +309,87 @@ An icon display the number of comments under each plant, to allow users to see w
 
 User Story:
 
-`As a user I can view other users profiles so that I can see their posts and learn more about them`
+`As a User I can create a profile so that I can interact with other users`
 
 Implementation:
 
-Profile pages have been implemented and can be viewed by clicking on a users Avatar that is displayed on a post.
-
-To view a users own profile, they can click their icon from the navigation menu.
-
-User Stories:
-
-`As a logged in user I can edit my profile so that I can change my profile picture and bio`
-
-Implementation:
-
-If the user is the owner of the profile, they are able to edit the profile via the profile form accessed via the three dot drop down menu on the profile.
-
-![profile_edit](xxx)
+The user can create a profile and upload a picture shown as their Avatar. They can also write a text in their profile to tell more about themselves.
 
 User Story:
 
-`As a logged in user I can update my username and password so that I can change my display name and keep my profile secure`
+`As a User I can see other people’s user so that I can see what they posted`
+
+Implementation:
+
+Profile Page has been implemented where a user can click on an Avatar and visit their profile. To view a their own profile, they click on their on Avatar from the navigation menu.
+
+User Story:
+
+`As a User I can see how many Plants, Comments, Followers and Reacts that profile has so that I can see the profiles with most interaction`
 
 Implemenation:
 
-The drop down menu also allows the user to edit their user name or password by clicking the menu options and filling in the forms.
+On the Profile page it is displayed the number of how many Plants, Followers the user has and the number of users they follow.
 
-![profile_change_password](xxx)
-
-
-User Story:
-
-`As a user I can tell if I am logged in or not so that I can log in if I need to`
-
-Implementation:
-
-When a user is logged in, their profile image is on display in the top right of the nav. This will allow the user to easily know when they are logged in and which account (if they have multiple)
-
-![nav_loggedin_Avatar](xxx)
-
-**Most followed profiles**
-
-User Stories:
-
-`As a user I can view all the posts by a specific user so that I can catch up on their latest posts, or decide I want to follow them`
-
-`As a user I can see a list of the most followed profiles so that I can see which profiles are popular`
-
-`As a user I can view statistics about a specific user: bio, number of posts, follows and users followed so that I can learn more about them`
-
-`As a logged in user I can follow and unfollow other users so that I can see and remove posts by specific users in my posts feed`
-
-
-Implementation:
-
-A component showing the most followed users is shown and the user profiles are able to be viewed by clicking on these. On a desktop, the most followed users has 10 users. On a mobile device this is restricted to 4 so that it does not take up too much room as scrolling may become a nuisance. A follow button will also be displayed that will allow the logged in user to follow the target user.
-
-![most_followed_profiles](xxx)
-
-**Artists**
+**Epic Followers**
 
 User Story:
 
-`As an artist, I would like to be able to register my details so others can view my work and contact details`
+`As a User I can follow another user so that I can stay up to date with them`
+
+Implementation:
+
+A user can visit a user's profile and click on the "Follow" button at the top right corner of the profile.
+
+User Story:
+
+`As a User I can unfollow a user so that I can stop staying up to date.`
 
 Implementation: 
 
-Users are able to register as an artist when they want to show users their information, such as speciality, location and hourly rate and contact details. Users may choose to follow other users who are registered Artists in order to keep up to date with their work.
-
-Users can register as an artist via their profile page by clicking the 3 dots to open a drop down menu. Select register as artist which will direct them to a form where they can fill in their details.
-
-Users can also unregister as an artist by selecting remove as artist button on the profile. This button is only displayed to owners of a profile.
-
-![artist_register](xxx)
+Once a user has followed another user, they can unfollow them by clicking on the button with the same name on the top left corner of the profile.
 
 User Story:
 
-`As a user, I would like to be able to view artist details so I can find a local artist when I want me ink`
+`As a User I can see which profiles have the most follower so that I can see which are the most interesting`
 
 Implementation:
 
-Artist information is able to be viewed on the artists user profile. This will allow users to view artists in their area if they want me tattoos.
+On the right hand side of the homepage a user can see a list of most followed profiles. Next to the name of each user a button "Follow" appears if the user don't follow them already, or "Unfollow.
 
-An Artist page has also been implemented to allow users to view all artist details in a list.
+**Plant Request**
 
-![artist_info_profile](xxx)
+Originally planned, the Epic "Plant Request" was discarted due to time constringements and difficulties in implementing the front end display of the requests.
 
-![artist_info_list](xxx)
+User Stories:
 
-**Artist Reviews**
+`As a User I can request a plant child from another user`
 
-User Story:
+`As a User I can cancel my plant request so that I undo my request`
 
-``As a user, I would like to be able to rate an artist so that owthers can see my rating and review`
+`As a User I can approve a plant request so that the requester can receive my plant child`
 
-Implementation:
+`As a User I can deny a plant request so that the requester can't receive my plant child`
 
-A leave a review button is present if the user is not the owner of the profile so they can leave a review on that artist. 
+Originally planned mplementation:
 
-Users are able to leave textual reviews on artists along with a rating out of 5 by filling in the review form that can be accessed by clicking Leave Review on the artists user profile.
-
-![artist_review](xxx)
-
-A star rating component was used to allow users to easily click the number of stars they wish to give as a rating. 
-
-Stars will light up to reflect the users rating. 
-
-The average rating of the artist is displayed on the artist profile as an average which is calculated by getting the sum of all ratings and dividing by the number of ratings.
-
-![average_rating](xxx)
+Each time a user posted a new Plant they were given the possibility make seedlings, called here "plant children", available to give away to other users. Each Plant was supposed to have up to 10 plant children. An Icon underneath each plant would have been used by other logged in users to request a plant child and trigger the request. The plant owner would have seen the request on their own profile where they had the possibility to approve or deny the request. On the requester's profile, they would have had the possibility to cancel the request and see the status of their request. A messaging system through Signal would have been implemented in order for the users to organize the plant child handover.
 
 **Contact**
 
 User Story:
 
-`As a user, I would like to be able to contact the site owner in case I have any issues or queries.`
+`As a User I can send a message to the admin so that I can communicate an issue.`
 
 Implementation:
 
-A contact form was added to the navigation that will allow users to submit a contact request if they have any issues or queries.
-
-![contact](xxx)
+A logged in user can send a message to the admin by clicking on "Contact Us" from the nagivation button and a message is posted on the admin site.
 
 <br>
 
 ### Future Features
 
-Messaging system
+Beside the Plant Request system originally planned and included in the user stories, a future feature would be a messaging system in order for the users to communicate with each other. Also, there would be a section where users can requests help in case their plant was sick and ask other users for tips on how to cure it.
 
 <hr>
 <br>
@@ -486,7 +440,6 @@ Sign Up
 
 ![Sign Up](xxx)
 
-</details>
 
 ## The Surface Plane
 
