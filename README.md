@@ -460,7 +460,7 @@ React Scripts: Scripts and configurations used for building and running React ap
 
 ## Testing
 
-Testing can be found in the [TESTING.md file](xxx)
+Testing can be found in the [TESTING.md file](https://github.com/AlessandroRossi87/pp-api/blob/main/TESTING.md)
 <hr>
 <br>
 
