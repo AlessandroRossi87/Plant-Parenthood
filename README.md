@@ -402,80 +402,67 @@ Beside the Plant Request system originally planned and included in the user stor
 
 <summary>All Wireframe Images</summary>
 
-Full size wireframes available [here](xxx)
+Homepage
 
-Home / Posts
+![Home](xxx)
 
-![Home / Posts](xxx)
+Plant Component
 
-Contact
+![Plant](xxx)
+
+Profile Component
+
+![Profile Page](xxx)
+
+Plant Create / Edit Component
+
+![Plant Create](xxx)
+
+Contact Us
 
 ![Contact](xxx)
-
-Feed
-
-![Feed](xxx)
-
-Reacted
-
-![Liked](xxx)
-
-Profiles
-
-![Profiles](xxx)
-
-Plant Request
-
-![Plant Request](xxx)
-
-Artist Profile
-
-![Artist Profile](xxx)
-
-Sign In
-
-![Sign In](xxx)
-
-Sign Up
-
-![Sign Up](xxx)
 
 
 ## The Surface Plane
 
 ### Design
 
-#### Colour-Scheme
+#### Logo
 
-The background colour for individual componenets is black (#000000).
+The logo has been created using the website Logo.com. The title is capitalized and the symbol is a stylized flower. The flower is used as the favicon.
 
-Icon, headings and border colours are gold (#cca53c).
+![Logo](xxx)
 
-Main text is white (#ffffff).
+![Favicon](xxx)
 
-The main page background colour is an off shade of white (#f8f8f8).
+
+#### Color-Scheme
+
+The colors chosen for this project are different shades of green and yellow-green. The buttons have been colored in blue and the reactions have been colored according to the traffic light logic: Hydrate in green, Moist in yellow and Dry in red.
+
+![Colors](xxx)
+
 <hr>
 <br>
 
 #### Typography
 
-The main font used on the website is "DM Sans".
+The font used for the website is "DM Sans", in case that is not available the system will render a generic sans serif.
 <hr>
 <br>
 
 
 ## Technologies
 
-* React
-    * Main framework used to create the user interface
-* Node
-    * Package manager used to install dependencies
-* Heroku
-    * Used for application hosting
-* Git
-    * Version control software
-* Github
-    * Repository used to store base code and docs
+React: The main framework used for building the user interface. Version 17.0.2.
+Node: A tool for managing package installations and dependencies. Used in the Node.js ecosystem.
+Bootstrap: Front-end framework used for styling and UI components. Version 4.6.0.
+React Bootstrap: A React-specific implementation of Bootstrap components. Version 1.6.3.
+React Router DOM: A library for handling routing in React applications. Version 5.3.0.
+Axios: A library for making HTTP requests. Version 0.21.4.
+JWT Decode: A library for decoding JWT (JSON Web Tokens). Version 3.1.2.
+React Infinite Scroll Component: A component for implementing infinite scrolling in React applications. Version 6.1.0.
+React Scripts: Scripts and configurations used for building and running React applications. Version 4.0.3.
 
 <hr>
 <br>
@@ -489,80 +476,85 @@ Testing can be found in the [TESTING.md file](xxx)
 ## Deployment
 ## Heroku Deployment
 
-The site was deployed to Heroku. The steps to deploy are as follows:
+The site was deployed to Heroku after combining the two workspaces.
 
-* Navigate to heroku and create an account
-* Click the new button in the top right corner
-* Select create new app
-* Enter app name
-* Select region and click create app
-* Click the resources tab and search for Heroku Postgres
-* Select hobby dev and continue
+* Go to Heroku and establish an account.
+* Press the "New" button located in the upper right corner.
+* Opt for "Create New App."
+* Input the desired app name.
+* Pick a region and initiate app creation.
+* Access the "Resources" tab and locate Heroku Postgres.
+* Choose "Hobby Dev" and proceed.
+* Move to the "Deploy" tab.
+* Navigate to "Connect to GitHub," and when prompted, sign in/authorize.
+* Within the search box, locate the repository for deployment and click on "Connect."
+* Scroll down to "Manual Deploy" and opt for the main branch.
+* Execute the deploy command.
 
-* Click the deploy tab
-* Scroll down to Connect to GitHub and sign in / authorize when prompted
-* In the search box, find the repositoy you want to deploy and click connect
-* Scroll down to Manual deploy and choose the main branch
-* Click deploy
 <hr>
 <br>
-The live link can be found here: [Live Site - Sizzle and Steak](https://body-doodles.onrender.com/)
+The live link can be found here: [Live Site - Plant Parenthood](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com/)
 <br>
 
 ## Version Control
 
-The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘body-doodles’.
+The site was created using the GitPod online editor and pushed to github to the remote repository ‘plant-parenthood’ on GitHub.
 
-The following git commands were used throughout development to push code to the remote repo:
+In order to push the changes to the repository I used the following commands:
 
-```git add <file>``` - This command was used to add the file(s) to the staging area before they are committed.
+```git add <file>``` - This command adds the file to be saved.
 
-```git commit -m “commit message”``` - This command was used to commit changes to the local repository queue ready for the final step.
+```git commit -m “commit message”``` - This command enters a commit message.
 
-```git push``` - This command was used to push all committed code to the remote repository on github.
+```git push``` - This command pushes all the changes to GitHub.
+
 <hr>
 <br>
 
 ### Run Locally
 
-Navigate to the GitHub Repository you want to clone to use locally:
 
-- Click on the code drop down button
-- Click on HTTPS
-- Copy the repository link to the clipboard
-- Open your IDE of choice (git must be installed for the next steps)
-- Type git clone copied-git-url into the IDE terminal
+Navigate to the GitHub repository you wish to clone for local use:
 
-The project will now have been cloned on your local machine for use.
+- Click on the dropdown button labeled "Code."
+- Select "HTTPS."
+- Copy the repository link to your clipboard.
+- Open your preferred integrated development environment (IDE) of choice (ensure that Git is installed for the upcoming - steps).
+- Type git clone copied-git-url into the terminal of your IDE.
+- The project is now cloned on your local machine and ready for use.
 
 Install Dependencies:
 
-```npm install```
+`npm install`
 
-Run Application:
+Launch the Application:
 
-```npm start```
+`npm start`
+
 <hr>
 <br>
 
 ### Forking
 
-Most commonly, forks are used to either propose changes to someone else's project or to use someone else's project as a starting point for your own idea.
 
-- Navigate to the GitHub Repository you want to fork.
+Forks are typically employed either to suggest modifications to another person's project or as a foundation for your own concept.
 
-- On the top right of the page under the header, click the fork button.
+- Visit the GitHub Repository you wish to fork.
 
-- This will create a duplicate of the full project in your GitHub Repository.
+- Click the fork button situated in the top right corner under the header.
+
+- This action will generate a duplicate of the entire project within your GitHub Repository.
 <hr>
 <br>
 
 ## Credits
 
-
 ### Content
 
-Logo used was taken from 
-
+The project is based mainly on the "Moments" walkthrough by Code Institute.
+The contact model is taken from ![Twilio.com](https://www.twilio.com/blog/build-contact-form-python-django-twilio-sendgrid)
+All pictures uploaded are private property. 
 
 ### Acknowledgements
+
+I would like to thank my mentor, Gareth McGirr, for his invaluable support during this project.
