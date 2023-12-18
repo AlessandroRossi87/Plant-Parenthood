@@ -2,7 +2,7 @@
 
 Plant Parenthood is a social media platform for plant lovers. Users are able to share their plants, comment on each other plants.
 <br>
-The live link can be found [here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
+The live link can be found ![here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
 <br>
 
 ![Mockup](xxx)
@@ -18,8 +18,6 @@ Plant Parenthood is aimed at all plant enthusiasts. The site aims to connect use
 
 I have developed this project by using agile methodologies by separating the small features in different epics. All user stories were assigned to different epics, subsequently divided between "Must have", "Should have" in order of priority and "Won't have" was added for those features planned at first but at the end discarted because of time constringements.
 I created the Kanban board in GitHub projects and can be found [here](https://github.com/users/AlessandroRossi87/projects/6/views/1).
-
-![Kanban](xxx)
 
 <hr>
 
@@ -190,15 +188,11 @@ When a user is logged in the following navigation items are shown:
 * Sign Out
 * User Icon and Username
 
-![navbar_loggedin_expanded](xxx)
-
 Logged out users:
 
 * Home
 * Sign In
 * Sign Up
-
-![navbar_loggedout](xxx)
 
 The site logo is displayed on the left side of the navigation at all times.
 
@@ -299,11 +293,7 @@ Logged in users can follow other users so that their plants appear under "Feed" 
 
 Comments are visible under each plant for both logged out and logged in users. Logged in users have the possibility to add comments under each plant.
 
-![comment_create](xxx)
-
 An icon display the number of comments under each plant, to allow users to see which plants have most comments. Each comment will show the clickable username of its author and their Avatar.
-
-![comments_list_under_post](xxx)
 
 **Profiles**
 
@@ -404,23 +394,23 @@ Beside the Plant Request system originally planned and included in the user stor
 
 Homepage
 
-![Home](xxx)
+![Home](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/homepage.png)
 
 Plant Component
 
-![Plant](xxx)
+![Plant](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/plantdetail.png)
 
 Profile Component
 
-![Profile Page](xxx)
+![Profile Page](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/profilepage.png)
 
 Plant Create / Edit Component
 
-![Plant Create](xxx)
+![Plant Create](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/plantcreate.png)
 
 Contact Us
 
-![Contact](xxx)
+![Contact](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/contact.png)
 
 
 ## The Surface Plane
@@ -431,16 +421,16 @@ Contact Us
 
 The logo has been created using the website Logo.com. The title is capitalized and the symbol is a stylized flower. The flower is used as the favicon.
 
-![Logo](xxx)
+![Logo](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/logo.png)
 
-![Favicon](xxx)
+![Favicon](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/faviconpp.png)
 
 
 #### Color-Scheme
 
 The colors chosen for this project are different shades of green and yellow-green. The buttons have been colored in blue and the reactions have been colored according to the traffic light logic: Hydrate in green, Moist in yellow and Dry in red.
 
-![Colors](xxx)
+![Colors](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/colors.png)
 
 <hr>
 <br>
