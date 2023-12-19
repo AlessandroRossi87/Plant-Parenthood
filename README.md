@@ -5,7 +5,7 @@ Plant Parenthood is a social media platform for plant lovers. Users are able to 
 The live link can be found [here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
 <br>
 
-![Mockup](xxx)
+![Mockup](https://github.com/AlessandroRossi87/plant-parenthood/blob/main/readmefiles/mockup.png)
 
 ## The Strategy Plane
 
