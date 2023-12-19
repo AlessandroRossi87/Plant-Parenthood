@@ -2,7 +2,7 @@
 
 Plant Parenthood is a social media platform for plant lovers. Users are able to share their plants, comment on each other plants.
 <br>
-The live link can be found ![here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
+The live link can be found [here](https://plant-parenthood-pp5-ac00fe42de7c.herokuapp.com)
 <br>
 
 ![Mockup](xxx)
@@ -445,15 +445,15 @@ The font used for the website is "DM Sans", in case that is not available the sy
 
 ## Technologies
 
-React: The main framework used for building the user interface. Version 17.0.2.
-Node: A tool for managing package installations and dependencies. Used in the Node.js ecosystem.
-Bootstrap: Front-end framework used for styling and UI components. Version 4.6.0.
-React Bootstrap: A React-specific implementation of Bootstrap components. Version 1.6.3.
-React Router DOM: A library for handling routing in React applications. Version 5.3.0.
-Axios: A library for making HTTP requests. Version 0.21.4.
-JWT Decode: A library for decoding JWT (JSON Web Tokens). Version 3.1.2.
-React Infinite Scroll Component: A component for implementing infinite scrolling in React applications. Version 6.1.0.
-React Scripts: Scripts and configurations used for building and running React applications. Version 4.0.3.
+- React: The main framework used for building the user interface. Version 17.0.2.
+- Node: A tool for managing package installations and dependencies. Used in the Node.js ecosystem.
+- Bootstrap: Front-end framework used for styling and UI components. Version 4.6.0.
+- React Bootstrap: A React-specific implementation of Bootstrap components. Version 1.6.3.
+- React Router DOM: A library for handling routing in React applications. Version 5.3.0.
+- Axios: A library for making HTTP requests. Version 0.21.4.
+- JWT Decode: A library for decoding JWT (JSON Web Tokens). Version 3.1.2.
+- React Infinite Scroll Component: A component for implementing infinite scrolling in React applications. Version 6.1.0.
+- React Scripts: Scripts and configurations used for building and running React applications. Version 4.0.3.
 
 <hr>
 <br>
